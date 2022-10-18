@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from './Loader';
-
+import './ImageList.css';
+import ImageCard from './ImageCard';
 const ImageList = (props) => {
   return (
     <div style={{ margin: '10px', padding: '5px' }}>
@@ -8,17 +9,10 @@ const ImageList = (props) => {
         {props.images ? 'Found: ' + props.images.length + ' images' : ''}
       </div>
       {props.isLoading && <Loader message="Search for images"></Loader>}
-      <div>
+      <div className="image-list">
         {props.images &&
           props.images.map((image) => (
-            <img
-              key={image.id}
-              style={{ padding: '5px' }}
-              src={image.urls.regular}
-              alt={image.alt_description}
-              width="200"
-              height="300"
-            ></img>
+            <ImageCard key={image.id} image={image} />
           ))}
       </div>
     </div>
